@@ -1,0 +1,22 @@
+## Module Eight Journal – Artemis Financial
+
+### 1. Briefly summarize your client, Artemis Financial, and its software requirements.
+Artemis Financial is a financial services company that needed to strengthen the security of its software systems, especially around data integrity and secure communication. For this project, I implemented SHA‑256 hashing “to securely generate a checksum for a unique data string” and configured HTTPS using a self‑signed SSL certificate so that sensitive financial data could be transmitted securely.
+
+### 2. What did you do well when you found your client’s software security vulnerabilities? Why is it important to code securely? What value does software security add to a company’s overall well-being?
+I did well at using OWASP Dependency‑Check and then manually reviewing each vulnerability to decide whether it truly applied to the Artemis Financial application. In my report, I noted that “several vulnerabilities were flagged… however, after reviewing each finding, I determined that most of the alerts were false positives.” This shows that I didn’t just trust the tool blindly—I analyzed the context. Coding securely is important because it protects customer data, reduces the risk of breaches, and helps maintain trust and regulatory compliance, all of which are critical to a company’s long‑term stability.
+
+### 3. Which part of the vulnerability assessment was challenging or helpful to you?
+The most challenging part was interpreting the dependency‑check results and understanding which CVEs were real risks versus false positives. Many issues were “triggered because of overly broad CPE matching” or tied to features not used in this project, so I had to carefully read the details. This was also helpful because it taught me how to combine automated scanning with human judgment to produce a more accurate assessment.
+
+### 4. How did you increase layers of security? In the future, what would you use to assess vulnerabilities and decide which mitigation techniques to use?
+I increased security by implementing SHA‑256 hashing, generating a self‑signed SSL certificate, configuring HTTPS on port 8443, and running OWASP Dependency‑Check to identify dependency risks. I also created a `suppression.xml` file to document and suppress false positives, following OWASP’s recommended approach. In the future, I would continue using tools like OWASP Dependency‑Check, static analysis tools, and industry standards such as the OWASP Top Ten and NIST guidelines to assess vulnerabilities and choose appropriate mitigation techniques.
+
+### 5. How did you make certain the code and software application were functional and secure? After refactoring the code, how did you check to see whether you introduced new vulnerabilities?
+I verified functionality by testing the `/hash` endpoint to ensure it returned the correct SHA‑256 checksum and by confirming that the application ran over HTTPS without errors. As I summarized in my report, I “verified that the hashing algorithm produced the correct output and confirmed that the server successfully delivered encrypted traffic over port 8443.” After refactoring, I reran OWASP Dependency‑Check and manually reviewed the updated report to confirm that no new vulnerabilities were introduced.
+
+### 6. What resources, tools, or coding practices did you use that might be helpful in future assignments or tasks?
+I used Java’s `MessageDigest` for SHA‑256 hashing, keytool for generating a Java KeyStore and self‑signed certificate, Spring Boot HTTPS configuration, and OWASP Dependency‑Check for vulnerability scanning. I also followed practices such as avoiding hard‑coded secrets, storing keys in a secure keystore, and documenting false positives with a `suppression.xml` file. These tools and practices are directly applicable to future secure software projects.
+
+### 7. Employers sometimes ask for examples of work that you have successfully completed to show your skills, knowledge, and experience. What might you show future employers from this assignment?
+From this assignment, I could show employers my completed Artemis Financial Practices for Secure Software Report. It demonstrates that I can implement SHA‑256 hashing, configure HTTPS with SSL certificates, run and interpret vulnerability scans, handle false positives responsibly, and document my security decisions clearly. Together, these show practical experience with secure coding, encryption, and real‑world security tooling.
